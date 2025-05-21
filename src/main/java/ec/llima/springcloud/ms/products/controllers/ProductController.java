@@ -26,12 +26,14 @@ public class ProductController {
 
     @GetMapping("/lista")
     public List<Product> getList() {
+        System.out.println("si se llamo>>>>>>>>>>>>>>>>>>>");
         return this.service.findAll();
     }
     
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getDetails(@PathVariable Long id) {
+        System.out.println("si se llamo>>>>>>>>>>>>>>>>>>>");
         Optional<Product> optionalProduct = this.service.findById(id);
         if (optionalProduct.isPresent()){
             return ResponseEntity.ok(optionalProduct.orElseThrow());
