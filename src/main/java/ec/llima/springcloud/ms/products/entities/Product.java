@@ -25,7 +25,7 @@ public class Product {
     @Column(name = "create_at")
     private LocalDate createAt;
     
-    @Transient //no es campo de base de datos
+    @Transient //no es campo de base de datos / lo agrego para poder decir desde que puerto se envio la respuesta por balanceo de carga
     private int port;
 
     

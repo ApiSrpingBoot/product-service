@@ -14,26 +14,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RestController
+@RestController // este es un controlador rest
 @RequestMapping("/api")
 public class ProductController {
 
+    //mi servicio con los metodos que puede usar, este lo recibimos por el constructor
+    //por ahora como solo existe el ProductServiceImpl que implemento ProductService 
+    //ese es el que lo va a usar por defecto 
     final private ProductService service;
 
     public ProductController(ProductService service) {
         this.service = service;
     }
 
-    @GetMapping("/lista")
+    @GetMapping("/list")
     public List<Product> getList() {
-        System.out.println("si se llamo>>>>>>>>>>>>>>>>>>>");
         return this.service.findAll();
     }
     
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getDetails(@PathVariable Long id) {
-        System.out.println("si se llamo>>>>>>>>>>>>>>>>>>>");
         Optional<Product> optionalProduct = this.service.findById(id);
         if (optionalProduct.isPresent()){
             return ResponseEntity.ok(optionalProduct.orElseThrow());
