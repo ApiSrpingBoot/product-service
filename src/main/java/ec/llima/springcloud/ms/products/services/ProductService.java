@@ -15,6 +15,12 @@ public interface ProductService {
 
     //Optional nos permite controlar o mandejar de forma funcional 
     Optional<Product> findById(Long id);
+
+    Product save(Product product);
+
+    void deleteById(Long id);
     
+    Product update(Product product);
+
 
 }

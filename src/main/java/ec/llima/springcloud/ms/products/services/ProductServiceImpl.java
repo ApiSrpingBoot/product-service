@@ -52,6 +52,30 @@ public class ProductServiceImpl implements ProductService{
             return product;
         });
     }
+
+    @Override
+    @Transactional // este metodo si modifica la base de datos, por lo tanto es una transaccion
+    // y no es de solo lectura
+    public Product save(Product product) {
+        return repository.save(product);
+    }
+
+    @Override
+    @Transactional // este metodo si modifica la base de datos, por lo tanto es una transaccion
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+        // No hay que hacer nada mas, ya que al ser un repositorio de JPA, 
+        // este se encarga de eliminar el producto por id
+        // y no es necesario retornar nada
+    }
+
+    @Override
+    @Transactional // este metodo si modifica la base de datos, por lo tanto es una transaccion
+    public Product update(Product product) {
+        return repository.save(product);
+        // No hay que hacer nada mas, ya que al ser un repositorio de JPA, 
+        // este se encarga de actualizar el producto y no es necesario retornar nada
+    }
     
 
 }
